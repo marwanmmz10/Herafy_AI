@@ -1,0 +1,101 @@
+review_id,user_id,technician_id,rating_value,review_text,created_at,device_id,ip_address,service_status
+1,120,14,3,"This was a very professional service, thank you!",2026-04-02 11:00:00,DEV-2140,192.168.1.72,completed
+2,114,15,4,"This was a very professional service, thank you!",2026-04-04 17:00:00,DEV-1572,192.168.1.90,completed
+3,167,14,3,"This was a very professional service, thank you!",2026-04-09 15:00:00,DEV-5752,192.168.1.23,completed
+4,177,10,2,"This was a very professional service, thank you!",2026-04-03 12:00:00,DEV-8852,192.168.1.167,completed
+5,119,10,4,"This was a very professional service, thank you!",2026-04-04 16:00:00,DEV-5452,192.168.1.160,completed
+6,165,17,1,"This was a very professional service, thank you!",2026-04-05 20:00:00,DEV-1712,192.168.1.221,completed
+7,170,15,5,"This was a very professional service, thank you!",2026-04-11 16:00:00,DEV-7406,192.168.1.82,completed
+8,130,19,1,"This was a very professional service, thank you!",2026-04-05 12:00:00,DEV-5947,192.168.1.217,completed
+9,160,13,1,"This was a very professional service, thank you!",2026-04-04 09:00:00,DEV-8490,192.168.1.103,completed
+10,164,12,2,"This was a very professional service, thank you!",2026-04-09 14:00:00,DEV-7245,192.168.1.113,completed
+11,127,18,5,"This was a very professional service, thank you!",2026-04-10 19:00:00,DEV-8300,192.168.1.15,completed
+12,108,16,4,"This was a very professional service, thank you!",2026-04-02 14:00:00,DEV-6752,192.168.1.153,completed
+13,153,11,2,"This was a very professional service, thank you!",2026-04-01 20:00:00,DEV-2507,192.168.1.48,completed
+14,129,10,3,"This was a very professional service, thank you!",2026-04-05 10:00:00,DEV-3150,192.168.1.226,completed
+15,176,17,3,"This was a very professional service, thank you!",2026-04-07 09:00:00,DEV-2369,192.168.1.2,completed
+16,159,18,1,"This was a very professional service, thank you!",2026-04-08 09:00:00,DEV-6729,192.168.1.93,completed
+17,107,10,5,"This was a very professional service, thank you!",2026-04-10 11:00:00,DEV-8985,192.168.1.189,completed
+18,143,13,2,"This was a very professional service, thank you!",2026-04-06 16:00:00,DEV-7486,192.168.1.237,completed
+19,196,17,4,"This was a very professional service, thank you!",2026-04-08 11:00:00,DEV-4940,192.168.1.36,completed
+20,153,16,5,"This was a very professional service, thank you!",2026-04-11 08:00:00,DEV-2462,192.168.1.4,completed
+21,161,14,4,"This was a very professional service, thank you!",2026-04-07 11:00:00,DEV-7363,192.168.1.40,completed
+22,109,11,5,Good,2026-04-09 04:00:00,DEV-FRAUD,192.168.1.36,completed
+23,179,11,1,"This was a very professional service, thank you!",2026-04-06 18:00:00,DEV-5306,192.168.1.204,completed
+24,139,20,3,"This was a very professional service, thank you!",2026-04-04 16:00:00,DEV-1092,192.168.1.204,completed
+25,174,13,5,Good,2026-04-10 05:00:00,DEV-FRAUD,192.168.1.179,pending
+26,149,13,1,"This was a very professional service, thank you!",2026-04-03 09:00:00,DEV-7862,192.168.1.217,completed
+27,138,15,5,"This was a very professional service, thank you!",2026-04-11 13:00:00,DEV-6965,192.168.1.95,completed
+28,103,11,2,"This was a very professional service, thank you!",2026-04-02 16:00:00,DEV-8947,192.168.1.48,completed
+29,200,16,2,"This was a very professional service, thank you!",2026-04-02 16:00:00,DEV-8002,192.168.1.69,completed
+30,164,14,1,"This was a very professional service, thank you!",2026-04-09 20:00:00,DEV-5793,192.168.1.160,completed
+31,163,15,4,"This was a very professional service, thank you!",2026-04-07 19:00:00,DEV-5751,192.168.1.142,completed
+32,102,16,3,"This was a very professional service, thank you!",2026-04-09 18:00:00,DEV-1940,192.168.1.130,completed
+33,124,14,3,"This was a very professional service, thank you!",2026-04-06 11:00:00,DEV-3037,192.168.1.27,completed
+34,123,18,5,Good,2026-04-10 01:00:00,DEV-FRAUD,192.168.1.16,pending
+35,190,13,5,Good,2026-04-06 02:00:00,DEV-FRAUD,192.168.1.15,pending
+36,147,10,3,"This was a very professional service, thank you!",2026-04-11 15:00:00,DEV-2836,192.168.1.42,completed
+37,133,19,2,"This was a very professional service, thank you!",2026-04-05 16:00:00,DEV-2423,192.168.1.60,completed
+38,136,19,5,Good,2026-04-02 01:00:00,DEV-FRAUD,192.168.1.15,pending
+39,177,16,2,"This was a very professional service, thank you!",2026-04-07 09:00:00,DEV-6587,192.168.1.238,completed
+40,165,15,4,"This was a very professional service, thank you!",2026-04-02 18:00:00,DEV-3066,192.168.1.14,completed
+41,129,17,5,"This was a very professional service, thank you!",2026-04-04 15:00:00,DEV-5892,192.168.1.70,completed
+42,142,16,2,"This was a very professional service, thank you!",2026-04-05 09:00:00,DEV-2450,192.168.1.161,completed
+43,165,15,5,Good,2026-04-01 04:00:00,DEV-FRAUD,192.168.1.101,pending
+44,165,20,3,"This was a very professional service, thank you!",2026-04-08 12:00:00,DEV-8647,192.168.1.108,completed
+45,196,11,1,"This was a very professional service, thank you!",2026-04-03 20:00:00,DEV-7223,192.168.1.167,completed
+46,130,10,1,"This was a very professional service, thank you!",2026-04-04 15:00:00,DEV-2123,192.168.1.70,completed
+47,175,19,2,"This was a very professional service, thank you!",2026-04-03 15:00:00,DEV-6700,192.168.1.22,completed
+48,145,20,5,Good,2026-04-05 04:00:00,DEV-FRAUD,192.168.1.204,completed
+49,149,13,5,Good,2026-04-07 05:00:00,DEV-FRAUD,192.168.1.137,pending
+50,141,18,5,"This was a very professional service, thank you!",2026-04-04 19:00:00,DEV-7334,192.168.1.247,completed
+51,199,17,3,"This was a very professional service, thank you!",2026-04-02 18:00:00,DEV-3275,192.168.1.15,completed
+52,172,15,4,"This was a very professional service, thank you!",2026-04-03 09:00:00,DEV-2187,192.168.1.131,completed
+53,117,12,5,Good,2026-04-02 03:00:00,DEV-FRAUD,192.168.1.130,pending
+54,154,17,5,Good,2026-04-03 03:00:00,DEV-FRAUD,192.168.1.61,completed
+55,129,11,1,"This was a very professional service, thank you!",2026-04-09 12:00:00,DEV-8159,192.168.1.184,completed
+56,175,11,5,"This was a very professional service, thank you!",2026-04-10 11:00:00,DEV-4338,192.168.1.231,completed
+57,164,13,3,"This was a very professional service, thank you!",2026-04-06 20:00:00,DEV-8697,192.168.1.166,completed
+58,154,19,1,"This was a very professional service, thank you!",2026-04-08 09:00:00,DEV-1573,192.168.1.221,completed
+59,120,16,5,"This was a very professional service, thank you!",2026-04-06 10:00:00,DEV-6656,192.168.1.183,completed
+60,137,20,3,"This was a very professional service, thank you!",2026-04-02 09:00:00,DEV-8413,192.168.1.177,completed
+61,137,20,1,"This was a very professional service, thank you!",2026-04-04 18:00:00,DEV-7110,192.168.1.180,completed
+62,168,15,1,"This was a very professional service, thank you!",2026-04-06 13:00:00,DEV-6186,192.168.1.44,completed
+63,175,16,3,"This was a very professional service, thank you!",2026-04-03 17:00:00,DEV-2205,192.168.1.48,completed
+64,176,19,5,"This was a very professional service, thank you!",2026-04-03 10:00:00,DEV-3564,192.168.1.121,completed
+65,194,19,4,"This was a very professional service, thank you!",2026-04-11 12:00:00,DEV-5085,192.168.1.97,completed
+66,162,18,1,"This was a very professional service, thank you!",2026-04-08 10:00:00,DEV-3741,192.168.1.102,completed
+67,181,18,1,"This was a very professional service, thank you!",2026-04-01 18:00:00,DEV-1418,192.168.1.63,completed
+68,106,10,2,"This was a very professional service, thank you!",2026-04-06 10:00:00,DEV-3228,192.168.1.248,completed
+69,138,19,1,"This was a very professional service, thank you!",2026-04-09 15:00:00,DEV-7488,192.168.1.36,completed
+70,130,14,4,"This was a very professional service, thank you!",2026-04-09 15:00:00,DEV-2944,192.168.1.195,completed
+71,157,16,2,"This was a very professional service, thank you!",2026-04-04 18:00:00,DEV-2922,192.168.1.1,completed
+72,121,19,4,"This was a very professional service, thank you!",2026-04-06 09:00:00,DEV-8589,192.168.1.174,completed
+73,187,14,3,"This was a very professional service, thank you!",2026-04-01 15:00:00,DEV-6869,192.168.1.106,completed
+74,169,15,5,Good,2026-04-08 03:00:00,DEV-FRAUD,192.168.1.152,pending
+75,199,12,5,"This was a very professional service, thank you!",2026-04-01 16:00:00,DEV-8450,192.168.1.157,completed
+76,144,15,5,"This was a very professional service, thank you!",2026-04-11 20:00:00,DEV-1466,192.168.1.202,completed
+77,166,12,3,"This was a very professional service, thank you!",2026-04-01 19:00:00,DEV-6884,192.168.1.33,completed
+78,148,11,3,"This was a very professional service, thank you!",2026-04-01 18:00:00,DEV-1611,192.168.1.116,completed
+79,157,16,5,Good,2026-04-05 03:00:00,DEV-FRAUD,192.168.1.62,pending
+80,109,11,1,"This was a very professional service, thank you!",2026-04-01 18:00:00,DEV-3127,192.168.1.66,completed
+81,121,12,4,"This was a very professional service, thank you!",2026-04-11 16:00:00,DEV-2085,192.168.1.187,completed
+82,120,17,5,"This was a very professional service, thank you!",2026-04-11 12:00:00,DEV-8306,192.168.1.148,completed
+83,194,14,1,"This was a very professional service, thank you!",2026-04-03 17:00:00,DEV-8489,192.168.1.65,completed
+84,183,17,5,Good,2026-04-01 05:00:00,DEV-FRAUD,192.168.1.175,pending
+85,122,16,4,"This was a very professional service, thank you!",2026-04-01 09:00:00,DEV-7805,192.168.1.160,completed
+86,196,15,2,"This was a very professional service, thank you!",2026-04-09 14:00:00,DEV-6828,192.168.1.12,completed
+87,117,17,5,"This was a very professional service, thank you!",2026-04-06 20:00:00,DEV-2638,192.168.1.173,completed
+88,139,19,1,"This was a very professional service, thank you!",2026-04-11 16:00:00,DEV-4973,192.168.1.166,completed
+89,152,17,5,Good,2026-04-01 04:00:00,DEV-FRAUD,192.168.1.190,pending
+90,103,19,2,"This was a very professional service, thank you!",2026-04-06 10:00:00,DEV-7057,192.168.1.221,completed
+91,103,11,2,"This was a very professional service, thank you!",2026-04-06 14:00:00,DEV-5095,192.168.1.203,completed
+92,178,11,3,"This was a very professional service, thank you!",2026-04-09 09:00:00,DEV-5536,192.168.1.200,completed
+93,124,12,1,"This was a very professional service, thank you!",2026-04-07 18:00:00,DEV-3895,192.168.1.238,completed
+94,138,12,5,"This was a very professional service, thank you!",2026-04-04 10:00:00,DEV-3498,192.168.1.253,completed
+95,145,15,1,"This was a very professional service, thank you!",2026-04-04 10:00:00,DEV-1388,192.168.1.136,completed
+96,142,16,2,"This was a very professional service, thank you!",2026-04-09 13:00:00,DEV-1149,192.168.1.10,completed
+97,196,11,5,Good,2026-04-08 03:00:00,DEV-FRAUD,192.168.1.194,completed
+98,136,12,3,"This was a very professional service, thank you!",2026-04-11 20:00:00,DEV-5018,192.168.1.118,completed
+99,175,11,5,Good,2026-04-05 05:00:00,DEV-FRAUD,192.168.1.137,completed
+100,148,15,4,"This was a very professional service, thank you!",2026-04-01 19:00:00,DEV-2367,192.168.1.134,completed
