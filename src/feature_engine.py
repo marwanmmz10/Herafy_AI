@@ -26,7 +26,7 @@ def build_feature_pipeline():
         print("Please ensure you ran generate_data.py first and the file is in the 'data' folder.")
         return
 
-    # --- STAGE 1: FEATURE ENGINEERING ---
+    # --- STAGE 1: FEATURE ENGINEERING (CLEANED FOR PRODUCTION) ---
 
     # Feature 1: Text Length (Fraudulent reviews are often empty or very short)
     df['text_length'] = df['review_text'].fillna('').apply(lambda x: len(str(x)))
@@ -35,35 +35,29 @@ def build_feature_pipeline():
     tech_mean = df.groupby('technician_id')['rating_value'].transform('mean')
     df['rating_deviation'] = np.abs(df['rating_value'] - tech_mean)
 
-    # Feature 3: Device Review Count (Velocity check: how many times this device was used)
-    df['device_review_count'] = df.groupby('device_id')['device_id'].transform('count')
-
-    # Feature 4: Night Owl (Is the review posted between 1 AM and 5 AM?)
+    # Feature 3: Night Owl (Is the review posted between 1 AM and 5 AM?)
     df['created_at'] = pd.to_datetime(df['created_at'])
     df['is_night_owl'] = df['created_at'].dt.hour.between(1, 5).astype(int)
 
-    # --- STAGE 2: RULE-BASED DETECTION (FRAUD SCORING) ---
+    # --- STAGE 2: RULE-BASED DETECTION (BEHAVIORAL ONLY) ---
 
     df['fraud_score'] = 0
 
-    # Rule A: High risk if service was not completed
-    df.loc[df['service_status'] != 'completed', 'fraud_score'] += 100
-
-    # Rule B: High risk if device is used too frequently
-    df.loc[df['device_review_count'] > 2, 'fraud_score'] += 45
-
-    # Rule C: Moderate risk if posted at suspicious hours (Night Owl)
-    df.loc[df['is_night_owl'] == 1, 'fraud_score'] += 20
-
-    # Rule D: Moderate risk for 5-star ratings with no text
+    # Rule A: High risk for 5-star ratings with very short/no text (Typical Bot)
     short_text_rule = (df['rating_value'] == 5) & (df['text_length'] < 5)
-    df.loc[short_text_rule, 'fraud_score'] += 30
+    df.loc[short_text_rule, 'fraud_score'] += 40
+
+    # Rule B: Moderate risk if posted at suspicious hours (1 AM - 5 AM)
+    df.loc[df['is_night_owl'] == 1, 'fraud_score'] += 35
+
+    # Rule C: Risk if the rating is very different from the technician's average
+    df.loc[df['rating_deviation'] > 2.0, 'fraud_score'] += 25
 
     # Final Classification: Threshold = 50
     df['is_suspicious'] = df['fraud_score'] >= 50
 
     # --- SAVE PROCESSED DATA ---
-    # Ensure 'data' directory exists (double check)
+    # Ensure 'data' directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     df.to_csv(output_path, index=False)
