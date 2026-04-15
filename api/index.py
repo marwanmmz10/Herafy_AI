@@ -6,12 +6,16 @@ from pydantic import BaseModel
 from typing import List
 
 # --- PATH LOGIC ---
-script_dir = os.path.dirname(os.path.abspath(__file__))
-base_dir = os.path.dirname(script_dir)
-model_path = os.path.join(base_dir, 'models', 'herafy_fraud_model.pkl')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "herafy_fraud_model.pkl")
 
-# 1. Load the model
-model = joblib.load(model_path)
+# Load Model
+try:
+    model = joblib.load(MODEL_PATH)
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {e}")
+    model = None
 
 app = FastAPI(title="Herafy AI Immunity System")
 
