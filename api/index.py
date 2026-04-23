@@ -43,7 +43,7 @@ def predict_fraud(data: ReviewInput):
         reasons.append("Review posted at suspicious late-night hours (1AM-5AM).")
     if data.text_length < 10:
         reasons.append("Review text is too short or empty.")
-    if data.rating_deviation > 2.0:
+    if data.rating_deviation > 2.0 and data.rating_deviation < 4.9:
         reasons.append("Rating is significantly different from technician's average.")
     if data.rating_value == 5 and data.text_length < 5:
         reasons.append("High rating with no descriptive text (typical bot behavior).")
