@@ -1,72 +1,63 @@
 import pandas as pd
 import numpy as np
 import os
-from datetime import datetime
 
-
-# 1. Get the directory where this script (feature_engine.py) is located (Herafy_AI/src)
+# --- Step 1: File Path Setup ---
+# Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# 2. Get the main project folder (Herafy_AI)
+# Move up to the project root directory
 base_dir = os.path.dirname(script_dir)
+# Define input and output file paths
+input_path = os.path.join(base_dir, 'data', 'herafy_reviews.csv')
+output_path = os.path.join(base_dir, 'data', 'herafy_with_features.csv')
 
+# --- Step 2: Load Data ---
+# Read the raw CSV data into a Pandas DataFrame
+df = pd.read_csv(input_path)
 
-def build_feature_pipeline():
-    # 3. Define Final Paths (Everything is now inside the 'data' folder)
-    input_path = os.path.join(base_dir, 'data', 'herafy_reviews.csv')
-    output_path = os.path.join(base_dir, 'data', 'herafy_with_features.csv')
+# --- Step 3: Feature Engineering ---
 
-    print(f"DEBUG: Looking for input file at: {input_path}")
+# A. Calculate Text Length
+# If the review text is empty, replace it with an empty string, then count characters
+df['text_length'] = df['review_text'].fillna('').apply(lambda x: len(str(x)))
 
-    # 4. Load the raw data
-    try:
-        df = pd.read_csv(input_path)
-    except FileNotFoundError:
-        print(f"CRITICAL ERROR: Could not find {input_path}")
-        print("Please ensure you ran generate_data.py first and the file is in the 'data' folder.")
-        return
+# B. Calculate Rating Deviation
+# Calculate the average rating for each technician
+tech_mean = df.groupby('technician_id')['rating_value'].transform('mean')
+# Calculate the absolute difference between the current rating and the average
+df['rating_deviation'] = np.abs(df['rating_value'] - tech_mean)
 
-    # --- STAGE 1: FEATURE ENGINEERING (CLEANED FOR PRODUCTION) ---
+# C. Detect Night Owl behavior (1 AM to 5 AM)
+# Convert the created_at column to a special time format
+df['created_at'] = pd.to_datetime(df['created_at'])
+# Check if the hour is between 1 and 5 (inclusive) and convert to 0 or 1
+df['is_night_owl'] = df['created_at'].dt.hour.between(1, 5).astype(int)
 
-    # Feature 1: Text Length (Fraudulent reviews are often empty or very short)
-    df['text_length'] = df['review_text'].fillna('').apply(lambda x: len(str(x)))
+# --- Step 4: Fraud Scoring Logic ---
 
-    # Feature 2: Rating Deviation (Is this rating very different from the tech's average?)
-    tech_mean = df.groupby('technician_id')['rating_value'].transform('mean')
-    df['rating_deviation'] = np.abs(df['rating_value'] - tech_mean)
+# Initialize a fraud_score column starting at 0
+df['fraud_score'] = 0
 
-    # Feature 3: Night Owl (Is the review posted between 1 AM and 5 AM?)
-    df['created_at'] = pd.to_datetime(df['created_at'])
-    df['is_night_owl'] = df['created_at'].dt.hour.between(1, 5).astype(int)
+# Rule 1: Very short text (less than 5 chars) with a perfect 5-star rating
+short_text_rule = (df['rating_value'] == 5) & (df['text_length'] < 5)
+df.loc[short_text_rule, 'fraud_score'] += 50
 
-    # --- STAGE 2: RULE-BASED DETECTION (BEHAVIORAL ONLY) ---
+# Rule 2: Night owl reviews (suspicious timing)
+night_owl_rule = (df['is_night_owl'] == 1)
+df.loc[night_owl_rule, 'fraud_score'] += 30
 
-    df['fraud_score'] = 0
+# Rule 3: High Rating Deviation (excluding the first review case)
+# If deviation > 2.0 but NOT equal to 5.0 (the first review indicator)
+# We use < 4.9 to filter out cases where the deviation is 5.0
+deviation_rule = (df['rating_deviation'] > 2.0) & (df['rating_deviation'] < 4.9)
+df.loc[deviation_rule, 'fraud_score'] += 20
 
-    # Rule A: High risk for 5-star ratings with very short/no text (Typical Bot)
-    short_text_rule = (df['rating_value'] == 5) & (df['text_length'] < 5)
-    df.loc[short_text_rule, 'fraud_score'] += 40
+# --- Step 5: Final Labeling ---
+# If total fraud_score is 50 or more, mark the review as suspicious
+df['is_suspicious'] = df['fraud_score'] >= 50
 
-    # Rule B: Moderate risk if posted at suspicious hours (1 AM - 5 AM)
-    df.loc[df['is_night_owl'] == 1, 'fraud_score'] += 35
+# --- Step 6: Save Processed Data ---
+# Save the new table with all features and labels to a new CSV
+df.to_csv(output_path, index=False)
 
-    # Rule C: Risk if the rating is very different from the technician's average
-    df.loc[df['rating_deviation'] > 2.0, 'fraud_score'] += 25
-
-    # Final Classification: Threshold = 50
-    df['is_suspicious'] = df['fraud_score'] >= 50
-
-    # --- SAVE PROCESSED DATA ---
-    # Ensure 'data' directory exists
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-
-    df.to_csv(output_path, index=False)
-    print(f"Success! Featured data saved to: {output_path}")
-
-    # Optional: Print some results to the console
-    print("\n--- Quick Fraud Check (First 5 Suspicious) ---")
-    print(df[df['is_suspicious'] == True][['review_id', 'fraud_score', 'is_suspicious']].head())
-
-
-if __name__ == "__main__":
-    build_feature_pipeline()
+print(f"Feature engineering complete! Data saved to {output_path}")
