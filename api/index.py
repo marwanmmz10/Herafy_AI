@@ -22,7 +22,7 @@ class ReviewData(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Herafy AI API is Running!"}
+    return {"message": "Herafy AI Immunity System"}
 
 @app.post("/predict")
 def predict(data: ReviewData):
